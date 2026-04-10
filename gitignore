@@ -1,0 +1,13 @@
+## Visual Studio 임시 파일
+.vs/
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+
+## Revit/Windows 임시 파일
+*.log
+*.tmp
+
+## 기타 설정
+.plastic/
