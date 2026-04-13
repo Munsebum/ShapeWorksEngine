@@ -1,0 +1,9 @@
+D:\★ 신사업개발팀\1. R&D\[건설기술연구원] 디지털 건설기준\작업\Add-in\ShapeWorks.Engine\ShapeWorks.Engine\bin\x64\Debug\ShapeWorks.Engine.dll
+D:\★ 신사업개발팀\1. R&D\[건설기술연구원] 디지털 건설기준\작업\Add-in\ShapeWorks.Engine\ShapeWorks.Engine\bin\x64\Debug\ShapeWorks.Engine.pdb
+D:\★ 신사업개발팀\1. R&D\[건설기술연구원] 디지털 건설기준\작업\Add-in\ShapeWorks.Engine\ShapeWorks.Engine\bin\x64\Debug\Newtonsoft.Json.dll
+D:\★ 신사업개발팀\1. R&D\[건설기술연구원] 디지털 건설기준\작업\Add-in\ShapeWorks.Engine\ShapeWorks.Engine\bin\x64\Debug\Newtonsoft.Json.xml
+D:\★ 신사업개발팀\1. R&D\[건설기술연구원] 디지털 건설기준\작업\Add-in\ShapeWorks.Engine\ShapeWorks.Engine\obj\x64\Debug\ShapeWorks.Engine.csproj.AssemblyReference.cache
+D:\★ 신사업개발팀\1. R&D\[건설기술연구원] 디지털 건설기준\작업\Add-in\ShapeWorks.Engine\ShapeWorks.Engine\obj\x64\Debug\ShapeWorks.Engine.csproj.CoreCompileInputs.cache
+D:\★ 신사업개발팀\1. R&D\[건설기술연구원] 디지털 건설기준\작업\Add-in\ShapeWorks.Engine\ShapeWorks.Engine\obj\x64\Debug\ShapeWor.0B1E3EEF.Up2Date
+D:\★ 신사업개발팀\1. R&D\[건설기술연구원] 디지털 건설기준\작업\Add-in\ShapeWorks.Engine\ShapeWorks.Engine\obj\x64\Debug\ShapeWorks.Engine.dll
+D:\★ 신사업개발팀\1. R&D\[건설기술연구원] 디지털 건설기준\작업\Add-in\ShapeWorks.Engine\ShapeWorks.Engine\obj\x64\Debug\ShapeWorks.Engine.pdb

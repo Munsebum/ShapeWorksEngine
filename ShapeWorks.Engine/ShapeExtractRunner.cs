@@ -15,7 +15,7 @@ namespace ShapeWorks.Engine
         {
             try
             {
-                
+                // 테스트
                 if (string.IsNullOrWhiteSpace(requestJsonFile))
                     return -1; // 경로가 비어있거나 유효하지 않음
 
@@ -31,7 +31,7 @@ namespace ShapeWorks.Engine
                 {
                     foreach (var esItem in requestData.ES)
                     {
-                        // 메서드 이름을 Data로 바꾸고, 결과는 구조체로 받습니다.
+                        
                         var result = RebarExtractor.GetTargetRebarData(doc, esItem);
                         double extractedDiameter = result.Diameter;
 
@@ -51,7 +51,7 @@ namespace ShapeWorks.Engine
                     }
                 }
 
-                // 3. 결과 파일 경로 생성 (가이드의 로직 반영)
+                
                 string requestFolder = Path.GetDirectoryName(requestJsonFile) ?? string.Empty;
                 string requestFileName = Path.GetFileName(requestJsonFile);
                 string responseFileName = requestFileName.StartsWith("ES_")
@@ -60,11 +60,11 @@ namespace ShapeWorks.Engine
 
                 string responseJsonFile = Path.Combine(requestFolder, responseFileName);
 
-                // 4. 결과 저장
+                
                 string outputJson = JsonConvert.SerializeObject(requestData, Formatting.Indented);
                 File.WriteAllText(responseJsonFile, outputJson);
 
-                // 5. 완료 알림 전송
+                // 완료 알림 전송
                 NotifyESCompleted(responseJsonFile);
 
                 return 0; // 정상 완료

@@ -8,15 +8,15 @@ namespace ShapeWorks.Engine
 {
     public class RebarExtractor
     {
-        // 결과값을 한꺼번에 담아 전달하기 위한 구조체
+        
         public struct RebarResult
         {
             public double Diameter; // 철근 지름 (mm)
             public double Spacing;  // 철근 간격 (mm)
-            public double Cover;    // 순피복 두께 (mm)
+            public double Cover;    // 피복 두께 (mm)
         }
 
-        // 🌟 [총괄 지휘관] 부재 이름에 따라 적절한 추출 로직으로 분기
+        
         public static RebarResult GetTargetRebarData(Document doc, ESItem esInfo)
         {
             RebarResult result = new RebarResult { Diameter = 0, Spacing = 0, Cover = 0 };
@@ -31,9 +31,6 @@ namespace ShapeWorks.Engine
             return result;
         }
 
-        // ----------------------------------------------------
-        // ▼ [거더 전담 로직] 거더 철근의 지름, 간격, 피복 추출
-        // ----------------------------------------------------
         private static RebarResult GetGirderRebarData(Document doc, ESItem esInfo)
         {
             RebarResult finalResult = new RebarResult();
@@ -44,7 +41,7 @@ namespace ShapeWorks.Engine
             string position = sectionInfo.SectionPosition;
             string detail = sectionInfo.DetailPosition;
 
-            // 1. 위치별 타겟 철근 타입 결정 (메모지)
+            // 1. 위치별 타겟 철근 타입 결정 
             string targetRebarName = "";
             if (position == "중앙부" && detail == "상면") targetRebarName = "1";
             else if (position == "중앙부" && detail == "하면") targetRebarName = "2";
@@ -86,7 +83,7 @@ namespace ShapeWorks.Engine
                 }
 
                 // ③ 순피복 두께 추출 (평행면 기반 최단 거리 계산)
-                finalResult.Cover = GetClearCover(rebar, doc, finalResult.Diameter);
+                finalResult.Cover = GetClearCover(rebar, doc);
 
                 return finalResult; // 조건에 맞는 첫 번째 철근에서 데이터를 뽑았으므로 즉시 반환
             }
@@ -94,10 +91,8 @@ namespace ShapeWorks.Engine
             return finalResult;
         }
 
-        // ----------------------------------------------------
-        // ▼ [피복 계산 도우미] 가장 긴 스케치 라인 기준 평행면 거리 계산
-        // ----------------------------------------------------
-        private static double GetClearCover(Rebar rebar, Document doc, double barDiaMm)
+
+        private static double GetClearCover(Rebar rebar, Document doc)
         {
             Element host = doc.GetElement(rebar.GetHostId());
             if (host == null) return 0;
@@ -139,9 +134,8 @@ namespace ShapeWorks.Engine
 
             if (minDistance == double.MaxValue) return 0;
 
-            // 6. 결과 보정: (중심거리 * mm변환) - (철근 지름 / 2) = 순피복 두께
-            double clearCover = (minDistance * 304.8) - (barDiaMm / 2.0);
-            return clearCover > 0 ? clearCover : 0;
+            // 6. sketch line ~ face 거리 (mm 변환)
+            return minDistance * 304.8;
         }
     }
 }
