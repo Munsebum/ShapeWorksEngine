@@ -1,3 +1,10 @@
 <Solution>
-  <Project Path="ShapeWorks.Engine/ShapeWorks.Engine.csproj" />
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="ShapeWorks.AddinTest/ShapeWorks.AddinTest.csproj" Id="7a48f7b3-1567-4a4f-a9ed-e0f1b2de19b9" />
+  <Project Path="ShapeWorks.Engine/ShapeWorks.Engine.csproj" Id="1475b145-9eed-4eec-a5eb-1a0353fa1f25">
+    <Platform Solution="*|x64" Project="x64" />
+  </Project>
 </Solution>

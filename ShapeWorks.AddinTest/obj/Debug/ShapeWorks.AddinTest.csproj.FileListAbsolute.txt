@@ -1,0 +1,11 @@
+D:\★ 신사업개발팀\1. R&D\[건설기술연구원] 디지털 건설기준\작업\Add-in\ShapeWorks.Engine\ShapeWorks.AddinTest\bin\Debug\ShapeWorks.AddinTest.dll
+D:\★ 신사업개발팀\1. R&D\[건설기술연구원] 디지털 건설기준\작업\Add-in\ShapeWorks.Engine\ShapeWorks.AddinTest\bin\Debug\ShapeWorks.AddinTest.pdb
+D:\★ 신사업개발팀\1. R&D\[건설기술연구원] 디지털 건설기준\작업\Add-in\ShapeWorks.Engine\ShapeWorks.AddinTest\bin\Debug\ShapeWorks.Engine.dll
+D:\★ 신사업개발팀\1. R&D\[건설기술연구원] 디지털 건설기준\작업\Add-in\ShapeWorks.Engine\ShapeWorks.AddinTest\bin\Debug\Newtonsoft.Json.dll
+D:\★ 신사업개발팀\1. R&D\[건설기술연구원] 디지털 건설기준\작업\Add-in\ShapeWorks.Engine\ShapeWorks.AddinTest\bin\Debug\ShapeWorks.Engine.pdb
+D:\★ 신사업개발팀\1. R&D\[건설기술연구원] 디지털 건설기준\작업\Add-in\ShapeWorks.Engine\ShapeWorks.AddinTest\bin\Debug\Newtonsoft.Json.xml
+D:\★ 신사업개발팀\1. R&D\[건설기술연구원] 디지털 건설기준\작업\Add-in\ShapeWorks.Engine\ShapeWorks.AddinTest\obj\Debug\ShapeWorks.AddinTest.csproj.AssemblyReference.cache
+D:\★ 신사업개발팀\1. R&D\[건설기술연구원] 디지털 건설기준\작업\Add-in\ShapeWorks.Engine\ShapeWorks.AddinTest\obj\Debug\ShapeWorks.AddinTest.csproj.CoreCompileInputs.cache
+D:\★ 신사업개발팀\1. R&D\[건설기술연구원] 디지털 건설기준\작업\Add-in\ShapeWorks.Engine\ShapeWorks.AddinTest\obj\Debug\ShapeWor.1DE37324.Up2Date
+D:\★ 신사업개발팀\1. R&D\[건설기술연구원] 디지털 건설기준\작업\Add-in\ShapeWorks.Engine\ShapeWorks.AddinTest\obj\Debug\ShapeWorks.AddinTest.dll
+D:\★ 신사업개발팀\1. R&D\[건설기술연구원] 디지털 건설기준\작업\Add-in\ShapeWorks.Engine\ShapeWorks.AddinTest\obj\Debug\ShapeWorks.AddinTest.pdb

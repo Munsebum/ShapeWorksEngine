@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+	<AddIn Type="Command">
+		<Name>ShapeWorks Engine Test</Name>
+		<Assembly>C:\ProgramData\Autodesk\Revit\Addins\2024\ShapeWorks.AddinTest.dll</Assembly>
+		<FullClassName>ShapeWorks.AddinTest.TestCommand</FullClassName>
+		<ClientId>A1B2C3D4-0000-0000-0000-111122223333</ClientId>
+		<VendorId>ShapeWorks</VendorId>
+		<VendorDescription>ShapeWorks Engine Test</VendorDescription>
+	</AddIn>
+</RevitAddIns>

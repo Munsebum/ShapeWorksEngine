@@ -17,16 +17,16 @@ namespace ShapeWorks.Engine
             {
                 // 테스트
                 if (string.IsNullOrWhiteSpace(requestJsonFile))
-                    return -1; // 경로가 비어있거나 유효하지 않음
+                    return -1; 
 
                 if (!File.Exists(requestJsonFile))
-                    return -2; // 파일이 실제로 존재하지 않음
+                    return -2; 
 
-                // 1. JSON 읽기
+                
                 string jsonText = File.ReadAllText(requestJsonFile);
                 ShapeExtractRequest requestData = JsonConvert.DeserializeObject<ShapeExtractRequest>(jsonText);
 
-                // 2. 내부 로직 처리 (RebarExtractor 호출)
+                
                 if (requestData.ES != null)
                 {
                     foreach (var esItem in requestData.ES)
