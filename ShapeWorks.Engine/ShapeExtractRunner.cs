@@ -15,81 +15,65 @@ namespace ShapeWorks.Engine
         {
             try
             {
-                // 테스트
                 if (string.IsNullOrWhiteSpace(requestJsonFile))
-                    return -1; 
+                    return -1;
 
                 if (!File.Exists(requestJsonFile))
-                    return -2; 
+                    return -2;
 
-                
                 string jsonText = File.ReadAllText(requestJsonFile);
                 ShapeExtractRequest requestData = JsonConvert.DeserializeObject<ShapeExtractRequest>(jsonText);
 
-                
                 if (requestData.ES != null)
                 {
                     foreach (var esItem in requestData.ES)
                     {
-                        
                         var result = RebarExtractor.GetTargetRebarData(doc, esItem);
-                        double extractedDiameter = result.Diameter;
 
-                        if (extractedDiameter > 0)
+                        if (result.VariableMap != null)
                         {
                             foreach (var pset in esItem.PSETList)
                             {
                                 foreach (var variable in pset.VariableList)
                                 {
-                                    if (variable.VariableName == "fIdiareb")
-                                    {
-                                        variable.VariableValue = Math.Round(extractedDiameter, 1).ToString();
-                                    }
+                                    if (result.VariableMap.TryGetValue(variable.VariableName, out string val))
+                                        variable.VariableValue = val;
                                 }
                             }
                         }
                     }
                 }
 
-                
                 string requestFolder = Path.GetDirectoryName(requestJsonFile) ?? string.Empty;
                 string requestFileName = Path.GetFileName(requestJsonFile);
                 string responseFileName = requestFileName.StartsWith("ES_")
                     ? "ESR_" + requestFileName.Substring(3)
                     : "ESR_" + requestFileName;
-
                 string responseJsonFile = Path.Combine(requestFolder, responseFileName);
 
-                
                 string outputJson = JsonConvert.SerializeObject(requestData, Formatting.Indented);
                 File.WriteAllText(responseJsonFile, outputJson);
 
-                // 완료 알림 전송
                 NotifyESCompleted(responseJsonFile);
-
-                return 0; // 정상 완료
+                return 0;
             }
             catch (Exception)
             {
-                return -99; // 예외 발생
+                return -99;
             }
         }
 
-        
         private static void NotifyESCompleted(string resultFileName)
         {
             try
             {
-                // 가이드의 JSON 형식 및 EscapeJson 적용
                 string json = "{\r\n" +
                               " \"action\": \"shape_extract_completed\",\r\n" +
                               " \"result_file\": \"" + EscapeJson(resultFileName) + "\"\r\n" +
                               "}";
-
                 using (var pipe = new NamedPipeClientStream(".", PipeName, PipeDirection.Out))
                 {
                     pipe.Connect(1000);
-                    
                     using (var sw = new StreamWriter(pipe, new UTF8Encoding(false)))
                     {
                         sw.Write(json);
@@ -97,13 +81,9 @@ namespace ShapeWorks.Engine
                     }
                 }
             }
-            catch
-            {
-                // 알림 실패 시 별도 처리는 하지 않음 (가이드 준수)
-            }
+            catch { }
         }
 
-        
         private static string EscapeJson(string value)
         {
             return value

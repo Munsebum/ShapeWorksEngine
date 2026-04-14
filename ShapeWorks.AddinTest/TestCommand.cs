@@ -3,19 +3,31 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Structure;
 using Autodesk.Revit.UI;
 using ShapeWorks.Engine;
-using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace ShapeWorks.AddinTest
 {
     [Transaction(TransactionMode.Manual)]
     public class TestCommand : IExternalCommand
     {
-        private const string TestJsonPath = @"D:\★ 신사업개발팀\1. R&D\[건설기술연구원] 디지털 건설기준\수령\260406 동일기술공사 형상정보추출 정보\데이터연계파일\ES_PSC I 거더_부재 피복두께_131115440.json";
-
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             Document doc = commandData.Application.ActiveUIDocument.Document;
+
+            // 파일 선택 다이얼로그
+            string testJsonPath = "";
+            using (OpenFileDialog dlg = new OpenFileDialog())
+            {
+                dlg.Title = "ES JSON 파일 선택";
+                dlg.Filter = "JSON 파일 (*.json)|*.json|모든 파일 (*.*)|*.*";
+                dlg.InitialDirectory = @"D:\";
+
+                if (dlg.ShowDialog() != DialogResult.OK)
+                    return Result.Cancelled;
+
+                testJsonPath = dlg.FileName;
+            }
 
             // 디버그: 방향별 Ray 거리 확인
             FilteredElementCollector col = new FilteredElementCollector(doc, doc.ActiveView.Id);
@@ -57,7 +69,8 @@ namespace ShapeWorks.AddinTest
             var hPosSide = ri.Find(mid, side);
             var hNegSide = ri.Find(mid, side.Negate());
 
-            string log = $"중간점: ({mid.X:F3}, {mid.Y:F3}, {mid.Z:F3})\n";
+            string log = $"선택 파일: {System.IO.Path.GetFileName(testJsonPath)}\n\n";
+            log += $"중간점: ({mid.X:F3}, {mid.Y:F3}, {mid.Z:F3})\n";
             log += $"철근방향: ({rDir.X:F3}, {rDir.Y:F3}, {rDir.Z:F3})\n";
             log += $"측면방향: ({side.X:F3}, {side.Y:F3}, {side.Z:F3})\n\n";
 
@@ -80,7 +93,7 @@ namespace ShapeWorks.AddinTest
             TaskDialog.Show("Ray 방향별 거리", log);
 
             // 엔진 전체 흐름 실행
-            int resultCode = ShapeExtractRunner.ExecuteShapeExtract(TestJsonPath, doc);
+            int resultCode = ShapeExtractRunner.ExecuteShapeExtract(testJsonPath, doc);
 
             string resultMsg;
             if (resultCode == 0) resultMsg = "✅ 성공! ESR_ 파일을 확인하세요.";
